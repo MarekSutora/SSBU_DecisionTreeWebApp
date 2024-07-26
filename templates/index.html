@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title> Prediction </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  <body onload="init()">
+    <h1> {{ dataset_name }} - Prediction</h1>
+
+    {% if scores %}
+      <table>
+        <tr>
+          <th>Model</th>
+          <th>Average Accuracy</th>
+          <th>Top 3 Features</th>
+        </tr>
+        {% for model, score in scores.items() %}
+          <tr>
+            <td>{{ model }}</td>
+            <td>{{ score }}%</td>
+            <td style="width:200px">
+              {% if feature_importances[model] %}
+                {% for feature in feature_importances[model] %}
+                  {{ feature }}<br>
+                {% endfor %}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+
+    {% if form %}
+      <form method="post">
+        {{ form.hidden_tag() }}
+        <div class="input-fields">
+          {% for field in form if field.name != 'submit' and field.name != 'model_name' and field.name != 'csrf_token' %}
+            <div class="input-field">
+              <label for="{{ field.id }}">{{ field.label.text }}</label>
+              {{ field() }}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="model-selection">
+          {{ form.model_name.label }} {{ form.model_name() }}
+        </div>
+        <div class="submit-button">
+          {{ form.submit() }}
+        </div>
+      </form>
+    {% endif %}
+
+    {% if prediction is not none %}
+      <h2>Prediction - {{ outcome_label }}: {{ prediction }}</h2>
+    {% else %}
+      <h2>Make a prediction using the form above.</h2>
+    {% endif %}
+
+    <div class="container">
+      {% if tree_image %}
+        <object id="decisionTree" data="{{ url_for('static', filename=tree_image) }}" type="image/svg+xml"></object>
+      {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

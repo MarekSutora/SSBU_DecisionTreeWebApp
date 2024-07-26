@@ -1,0 +1,121 @@
+body {
+    background-color: #D9EBFF;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #2A2A2A;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    height: 400px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.input-fields {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    width: 50%; /* further reduced the size to 50% */
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px; /* added padding to the left and right of each input field */
+}
+
+.input-field label, .input-field input {
+    width: 80%;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.input-field input {
+    padding: 0 10px; /* added padding to the left and right */
+}
+
+.model-selection, .submit-button {
+    width: 30%;
+    text-align: center;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #FFD700;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #FFC700;
+}
+
+table {
+    width: 30%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+#decisionTree {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+#upload-form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #FFD700;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+#upload-form input[type="submit"]:hover {
+    background-color: #FFC700;
+}
+
+#upload-form input[type="file"] {
+    padding: 10px;
+}
+
+#file-input {
+    margin: 0 auto;
+    width: auto;
+}
